@@ -41,12 +41,12 @@ spec:
         container(name: 'kaniko', shell: '/busybox/sh') {
 
           writeFile file: "Dockerfile", text: """
-            FROM jenkins/agent
-            RUN mkdir /home/jenkins/.m2
+            FROM nginx:latest
+            COPY index.html /usr/share/nginx/html/index.html2
           """
           
           sh '''#!/busybox/sh
-            /kaniko/executor --context `pwd` --verbosity debug --destination gtacloud/gf-demo
+            /kaniko/executor --context `pwd` --verbosity debug --destination gtacloud/gf-demo:$GIT_COMMIT
           '''
         }
       }
