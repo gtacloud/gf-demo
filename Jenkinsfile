@@ -58,7 +58,7 @@ spec:
     }
     stage ('extract backend') {
       container('gf') {
-        sh 'cd /app && tar -xzf front-end.tar.gz'
+        sh 'cd /app && tar -xzf back-end.tar.gz'
       }
     }
     stage ('extract testing') {
