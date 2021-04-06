@@ -14,14 +14,17 @@ spec:
     envFrom:
     - configMapRef:
         name: gfenv
+  - name: mysql
+    image: mysql:8
+    command: "--default-authentication-plugin=mysql_native_password"  
 """
   ) {
 
   node(label) {
-    stage('Build with Kaniko') {
+    stage('Test env') {
       git 'https://github.com/jenkinsci/docker-inbound-agent.git'
       container('ubuntu') {
-        sh 'env && sleep 120'
+        sh 'ls && sleep 120'
       }
     }
   }
