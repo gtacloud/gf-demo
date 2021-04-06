@@ -54,7 +54,7 @@ spec:
     }
     stage ('copy node modules') {
       container('gf') {
-        sh 'ls gf && cp -r /gf/ /app && cp -r /opt/*.tar.gz /app && ls /app'
+        sh 'ls /gf && cp -r /gf/ /app && cp -r /opt/*.tar.gz /app && ls /app'
       }
     }
     stage ('extract frontend') {
