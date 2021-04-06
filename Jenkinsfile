@@ -17,7 +17,7 @@ spec:
 """
   ) {
 
-  node(POD_LABEL) {
+  node(label) {
     stage('Build with Kaniko') {
       git 'https://github.com/jenkinsci/docker-inbound-agent.git'
       container('ubuntu') {
