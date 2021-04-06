@@ -16,7 +16,10 @@ spec:
         name: gfenv
   - name: mysql
     image: mysql:8
-    args: ["--default-authentication-plugin=mysql_native_password"]  
+    args: ["--default-authentication-plugin=mysql_native_password"]
+    envFrom:
+    - configMapRef:
+        name: gfenv
 """
   ) {
 
