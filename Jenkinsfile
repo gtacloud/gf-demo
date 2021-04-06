@@ -54,7 +54,7 @@ spec:
     }
     stage ('copy node modules') {
       container('gf') {
-        sh 'cp -r /gf/ /app && cp -r /opt/*.tar.gz /app'
+        sh 'ls gf && cp -r /gf/ /app && cp -r /opt/*.tar.gz /app && ls /app'
       }
     }
     stage ('extract frontend') {
@@ -74,7 +74,7 @@ spec:
     }
     stage('Verify artefacts')
       container('gf') {
-        sh 'ls /app && ls /app/front-end/node_modules'
+        sh 'ls /app'
       }    
     stage('verify sql dump files') {
       container('mysql') {
