@@ -53,5 +53,10 @@ spec:
       container('gf') {
         sh 'ls /app'
       }
+    stage('verify sql dump files') {
+      container('mysql') {
+        sh 'ls /docker-entrypoint-initdb.d'
+      }
+    }
   }
 }
