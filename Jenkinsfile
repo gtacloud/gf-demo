@@ -16,7 +16,7 @@ spec:
         name: gfenv
   - name: mysql
     image: mysql:8
-    command: "--default-authentication-plugin=mysql_native_password"  
+    command: ["--default-authentication-plugin=mysql_native_password"]  
 """
   ) {
 
