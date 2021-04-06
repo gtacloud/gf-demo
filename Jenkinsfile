@@ -36,6 +36,9 @@ spec:
     envFrom:
     - configMapRef:
         name: gfenv
+    volumeMounts:
+    - name: gf
+      mountPath: /gf
   volumes:
   - name: gf
     persistentVolumeClaim:
@@ -51,7 +54,7 @@ spec:
     }
     stage ('copy node modules') {
       container('gf') {
-        sh 'cp -r /opt/*.tar.gz /app'
+        sh 'cp -r /gf/ /app && cp -r /opt/*.tar.gz /app'
       }
     }
     stage ('extract frontend') {
