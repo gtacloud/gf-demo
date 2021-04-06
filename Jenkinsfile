@@ -30,7 +30,7 @@ spec:
     - configMapRef:
         name: gfenv
   volumes:
-  - name: artefacts
+  - name: gf
     persistentVolumeClaim:
       claimName: gf  
 """
