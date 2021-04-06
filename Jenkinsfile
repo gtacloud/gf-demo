@@ -46,7 +46,7 @@ spec:
   node(label) {
     stage('Test env') {
       container('ubuntu') {
-        sh 'sleep 300'
+        sh 'echo Preparing'
       }
     }
     stage ('copy node modules') {
