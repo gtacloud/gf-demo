@@ -27,6 +27,9 @@ spec:
     - name: gf
       mountPath: /docker-entrypoint-initdb.d
       subPath: dev-ops/db-container/sql/mysql-init
+    ports:
+    - name: mysql
+      containerPort: 3306
   - name: gf 
     image: gtagroup/public-projects:gf-full
     command: ["sleep","infinity"]
@@ -43,7 +46,7 @@ spec:
   node(label) {
     stage('Test env') {
       container('ubuntu') {
-        sh 'cp -r /gf . && pwd && ls'
+        sh 'sleep 300'
       }
     }
     stage ('copy node modules') {
