@@ -14,6 +14,9 @@ spec:
     envFrom:
     - configMapRef:
         name: gfenv
+    volumeMounts:
+    - name: gf
+      mountPath: /gf
   - name: mysql
     image: mysql:8
     args: ["--default-authentication-plugin=mysql_native_password"]
@@ -25,19 +28,23 @@ spec:
     command: ["sleep","infinity"]
     envFrom:
     - configMapRef:
-        name: gfenv    
+        name: gfenv
+  volumes:
+  - name: artefacts
+    persistentVolumeClaim:
+      claimName: gf  
 """
   ) {
 
   node(label) {
     stage('Test env') {
       container('ubuntu') {
-        sh 'ls && sleep 120'
+        sh 'ls && cp -r /gf/ /app'
       }
     }
     stage('Verify artefacts')
       container('gf') {
-        sh 'ls /opt'
+        sh 'ls /app'
       }
   }
 }
