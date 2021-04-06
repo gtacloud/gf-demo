@@ -23,12 +23,19 @@ spec:
     envFrom:
     - configMapRef:
         name: gfenv
+    volumeMounts:
+    - name: gf
+      mountPath: /docker-entrypoint-initdb.d
+      subPath: dev-ops/db-container/sql/mysql-init
   - name: gf 
     image: gtagroup/public-projects:gf-full
     command: ["sleep","infinity"]
     envFrom:
     - configMapRef:
         name: gfenv
+    volumeMounts:
+    - name: gf
+      mountPath: /app
   volumes:
   - name: gf
     persistentVolumeClaim:
@@ -39,7 +46,7 @@ spec:
   node(label) {
     stage('Test env') {
       container('ubuntu') {
-        sh 'ls && cp -r /gf/ /app && sleep 300'
+        sh 'cp -r /gf . && pwd && ls'
       }
     }
     stage('Verify artefacts')
