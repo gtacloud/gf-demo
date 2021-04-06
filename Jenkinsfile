@@ -88,5 +88,15 @@ spec:
         sh 'cd /app && lerna exec yarn run staged:precommit --scope back-end'
       } 
     }
+    stage('Lerna back-end') {
+      container('gf') {
+        sh 'cd /app && lerna exec yarn run staged:precommit --scope front-end'
+      } 
+    }
+      stage('Lerna validate-ci') {
+      container('gf') {
+        sh 'cd /app && lerna exec yarn run validate-ci --parallel --scope front-end --scope back-end'
+      } 
+    }
   }
 }
