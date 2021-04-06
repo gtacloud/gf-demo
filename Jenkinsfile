@@ -22,6 +22,7 @@ spec:
         name: gfenv
   - name: gf 
     image: gtagroup/public-projects:gf-full
+    command: ["sleep","infinity"]
     envFrom:
     - configMapRef:
         name: gfenv    
