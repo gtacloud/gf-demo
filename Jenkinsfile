@@ -20,15 +20,23 @@ spec:
     envFrom:
     - configMapRef:
         name: gfenv
+  - name: gf 
+    image: gtagroup/public-projects:gf-full
+    envFrom:
+    - configMapRef:
+        name: gfenv    
 """
   ) {
 
   node(label) {
     stage('Test env') {
-      git 'https://github.com/jenkinsci/docker-inbound-agent.git'
       container('ubuntu') {
         sh 'ls && sleep 120'
       }
     }
+    stage('Verify artefacts')
+      container('gf') {
+        sh 'ls /opt'
+      }
   }
 }
