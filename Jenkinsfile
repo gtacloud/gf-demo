@@ -33,9 +33,6 @@ spec:
     envFrom:
     - configMapRef:
         name: gfenv
-    volumeMounts:
-    - name: gf
-      mountPath: /app
   volumes:
   - name: gf
     persistentVolumeClaim:
