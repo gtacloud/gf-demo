@@ -78,5 +78,15 @@ spec:
         sh 'ls /docker-entrypoint-initdb.d'
       }
     }
+    stage('Lerna bootstrap') {
+      container('gf') {
+        sh 'cd /app && lerna bootstrap'
+      } 
+    }
+    stage('Lerna back-end') {
+      container('gf') {
+        sh 'cd /app && lerna exec yarn run staged:precommit --scope back-end'
+      } 
+    }
   }
 }
