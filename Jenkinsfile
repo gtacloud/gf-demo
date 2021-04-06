@@ -33,6 +33,11 @@ spec:
     }
   }
   stages {
+    stage("Checkout code") {
+      steps {
+        checkout scm
+      }
+    }
     stage('Build with Kaniko') {
       environment {
         PATH = "/busybox:/kaniko:$PATH"
