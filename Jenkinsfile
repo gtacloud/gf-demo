@@ -39,7 +39,7 @@ spec:
   node(label) {
     stage('Test env') {
       container('ubuntu') {
-        sh 'ls && cp -r /gf/ /app'
+        sh 'ls && cp -r /gf/ /app && sleep 300'
       }
     }
     stage('Verify artefacts')
