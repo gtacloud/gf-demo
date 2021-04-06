@@ -1,0 +1,2 @@
+show databases;
+select now();
