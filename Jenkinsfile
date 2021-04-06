@@ -49,10 +49,30 @@ spec:
         sh 'cp -r /gf . && pwd && ls'
       }
     }
+    stage ('copy node modules') {
+      container('gf') {
+        sh 'cp -r /opt/*.tar.gz /app'
+      }
+    }
+    stage ('extract frontend') {
+      container('gf') {
+        sh 'cd /app && tar -xzf front-end.tar.gz'
+      }
+    }
+    stage ('extract backend') {
+      container('gf') {
+        sh 'cd /app && tar -xzf front-end.tar.gz'
+      }
+    }
+    stage ('extract testing') {
+      container('gf') {
+        sh 'cd /app && tar -xzf testing.tar.gz'
+      }
+    }
     stage('Verify artefacts')
       container('gf') {
-        sh 'ls /app'
-      }
+        sh 'ls /app && ls /app/front-end/node_modules'
+      }    
     stage('verify sql dump files') {
       container('mysql') {
         sh 'ls /docker-entrypoint-initdb.d'
