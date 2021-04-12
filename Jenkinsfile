@@ -50,7 +50,7 @@ spec:
     stage('Test env') {
       container('ubuntu') {
         checkout scm
-        sh 'echo Preparing && pwd && ls -l'
+        sh 'echo Preparing && pwd && ls -l && sleep 3600'
       }
     }
     stage ('copy node modules') {
