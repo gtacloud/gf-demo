@@ -49,7 +49,7 @@ spec:
   node(label) {
     stage('Test env') {
       container('ubuntu') {
-        sh 'echo Preparing && pwd && ls -l'
+        sh 'echo Preparing && pwd && ls -l /home/jenkins'
       }
     }
     stage ('copy node modules') {
