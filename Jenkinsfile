@@ -49,7 +49,8 @@ spec:
   node(label) {
     stage('Test env') {
       container('ubuntu') {
-        sh 'echo Preparing && pwd && ls -l /home/jenkins'
+        checkout scm
+        sh 'echo Preparing && pwd && ls -l'
       }
     }
     stage ('copy node modules') {
